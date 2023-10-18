@@ -21,8 +21,7 @@ with open('language_lines.json', 'r') as file:
 def calculate_error_rate(row, total_lines):
     if total_lines > 0:
         return row['introduced'] / total_lines
-    else:
-        return None
+    return None
 
 # 言語別のエラー率を計算とグラフ描写
 analyzers_df = pd.DataFrame(analyzers_data)
