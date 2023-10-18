@@ -11,9 +11,6 @@ name = "python"
   additional_builtins = ["_", "pretty_output"]
   cyclomatic_complexity_threshold = "high"
 
-[[transformers]]  
-name = "black"  
-enabled = true
 
 [[analyzers]]
 name = "javascript"
@@ -24,19 +21,12 @@ name = "javascript"
   cyclomatic_complexity_threshold = "high"
   style_guide = "standard"
 
-[[transformers]]  
-name = "prettier"
-enabled = true
-
 [[analyzers]]
 name = "rust"
 
   [analyzers.meta]
   msrv = "stable"
 
-[[transformers]]  
-name = "rustfmt"  
-enabled = true
 
 [[analyzers]]
 name = "ruby"
@@ -44,9 +34,6 @@ name = "ruby"
   [analyzers.meta]
   cyclomatic_complexity_threshold = "high"
 
-[[transformers]]  
-name = "rubocop"  
-enabled = true
 
 [[analyzers]]
 name = "cxx"
@@ -54,9 +41,6 @@ name = "cxx"
   [analyzers.meta]
   cyclomatic_complexity_threshold = "high"
 
-[[transformers]]  
-name = "clang-format"
-enabled = true
 
 [[analyzers]]
 name = "java"
@@ -72,5 +56,5 @@ name = "php"
   cyclomatic_complexity_threshold = "high"
 
 [[transformers]]  
-name = "php-cs-fixer"  
+name = "prettier"
 enabled = true

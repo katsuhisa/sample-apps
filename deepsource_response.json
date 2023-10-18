@@ -1,0 +1,53 @@
+{
+  "data": {
+    "repository": {
+      "analysisRuns": {
+        "edges": [
+          {
+            "node": {
+              "status": "FAILURE",
+              "summary": {
+                "occurrenceDistributionByAnalyzer": [
+                  {
+                    "analyzerShortcode": "python",
+                    "introduced": 10
+                  },
+                  {
+                    "analyzerShortcode": "javascript",
+                    "introduced": 0
+                  },
+                  {
+                    "analyzerShortcode": "rust",
+                    "introduced": 0
+                  },
+                  {
+                    "analyzerShortcode": "ruby",
+                    "introduced": 0
+                  },
+                  {
+                    "analyzerShortcode": "cxx",
+                    "introduced": 0
+                  },
+                  {
+                    "analyzerShortcode": "java",
+                    "introduced": 0
+                  }
+                ],
+                "occurrenceDistributionByCategory": [
+                  {
+                    "category": "DOCUMENTATION",
+                    "introduced": 8
+                  },
+                  {
+                    "category": "STYLE",
+                    "introduced": 2
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
