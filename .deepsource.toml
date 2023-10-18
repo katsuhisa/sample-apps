@@ -1,0 +1,40 @@
+version = 1
+
+[[analyzers]]
+name = "python"
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"
+  type_checker = "mypy"
+  max_line_length = 88
+  skip_doc_coverage = ["module", "magic", "init"]
+  additional_builtins = ["_", "pretty_output"]
+  cyclomatic_complexity_threshold = "high"
+
+[[analyzers]]
+name = "javascript"
+
+  [analyzers.meta]
+  plugins = ["react","vue","angular"]
+  environment = ["nodejs","jquery","browser","mongo"]
+  cyclomatic_complexity_threshold = "high"
+  style_guide = "standard"
+
+[[analyzers]]
+name = "cxx"
+
+  [analyzers.meta]
+  cyclomatic_complexity_threshold = "high"
+
+[[analyzers]]
+name = "java"
+
+  [analyzers.meta]
+  runtime_version = "11"
+  cyclomatic_complexity_threshold = "high"
+
+[[analyzers]]
+name = "rust"
+
+  [analyzers.meta]
+  msrv = "stable"
