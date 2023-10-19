@@ -10,11 +10,11 @@
                 "occurrenceDistributionByAnalyzer": [
                   {
                     "analyzerShortcode": "python",
-                    "introduced": 3
+                    "introduced": 163
                   },
                   {
                     "analyzerShortcode": "javascript",
-                    "introduced": 0
+                    "introduced": 8
                   },
                   {
                     "analyzerShortcode": "rust",
@@ -26,7 +26,7 @@
                   },
                   {
                     "analyzerShortcode": "cxx",
-                    "introduced": 0
+                    "introduced": 2
                   },
                   {
                     "analyzerShortcode": "java",
@@ -35,16 +35,24 @@
                 ],
                 "occurrenceDistributionByCategory": [
                   {
+                    "category": "DOCUMENTATION",
+                    "introduced": 9
+                  },
+                  {
                     "category": "STYLE",
-                    "introduced": 1
+                    "introduced": 125
                   },
                   {
                     "category": "ANTI_PATTERN",
-                    "introduced": 1
+                    "introduced": 28
                   },
                   {
                     "category": "SECURITY",
-                    "introduced": 1
+                    "introduced": 6
+                  },
+                  {
+                    "category": "BUG_RISK",
+                    "introduced": 5
                   }
                 ]
               }
