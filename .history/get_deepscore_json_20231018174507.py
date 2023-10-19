@@ -12,38 +12,17 @@ query = '''
 query($repoName: String!, $userName: String!, $vcsProvider: VCSProvider!) {
     repository(name: $repoName, login: $userName, vcsProvider: $vcsProvider) {
         analysisRuns(last: 1) {
-            edges {
-                node {
-                status
-                summary {
-                    occurrenceDistributionByAnalyzer {
-                    analyzerShortcode
-                    introduced
-                    }
-                    occurrenceDistributionByCategory {
-                    category
-                    introduced
-                    }
-                }
-                }
-            }
-        }
-        enabledAnalyzers {
         edges {
             node {
-            name
-            issues(last:10) {
-                edges {
-                node {
-                    title
-                    analyzer {
-                    name
-                    }
-                    autofixAvailable
-                    category
-                    severity
-                    shortDescription
+            status
+            summary {
+                occurrenceDistributionByAnalyzer {
+                analyzerShortcode
+                introduced
                 }
+                occurrenceDistributionByCategory {
+                category
+                introduced
                 }
             }
             }
@@ -54,7 +33,7 @@ query($repoName: String!, $userName: String!, $vcsProvider: VCSProvider!) {
 '''
 variables = {
     "repoName": "sample-apps",
-    "userName": "katsuhisa",
+    "userName": "LLM-Hackathon-Team5",
     "vcsProvider": "GITHUB"
 }
 
@@ -70,6 +49,6 @@ if response.status_code == 200:
     with open('deepsource_response.json', 'w') as json_file:
         json.dump(data, json_file, indent=2)
     
-    print("Data has been saved to 'deepsource_response.json'")
+    print("Data has been saved to 'response.json'")
 else:
     print(f"Failed to execute query: {response.status_code}")

@@ -10,7 +10,7 @@
                 "occurrenceDistributionByAnalyzer": [
                   {
                     "analyzerShortcode": "python",
-                    "introduced": 10
+                    "introduced": 3
                   },
                   {
                     "analyzerShortcode": "javascript",
@@ -35,12 +35,794 @@
                 ],
                 "occurrenceDistributionByCategory": [
                   {
-                    "category": "DOCUMENTATION",
-                    "introduced": 8
+                    "category": "STYLE",
+                    "introduced": 1
                   },
                   {
-                    "category": "STYLE",
-                    "introduced": 2
+                    "category": "ANTI_PATTERN",
+                    "introduced": 1
+                  },
+                  {
+                    "category": "SECURITY",
+                    "introduced": 1
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "enabledAnalyzers": {
+        "edges": [
+          {
+            "node": {
+              "name": "Python",
+              "issues": {
+                "edges": [
+                  {
+                    "node": {
+                      "title": "Invalid `envvar` default",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "Env manipulation functions return `None` or `str` values. Supplying anything different\nas a default may cause bugs. See https://docs.python.org/3/library/os.html#os.getenv."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Subprocess run with ignored non-zero exit",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": true,
+                      "category": "BUG_RISK",
+                      "severity": "MINOR",
+                      "shortDescription": "`subprocess.run` uses a default of `check=False`, which means that a nonzero exit code will be\nignored by default, instead of raising an exception.\n\nYou can ignore this issue if this behaviour is intended."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "No return value expected",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": false,
+                      "category": "TYPECHECK",
+                      "severity": "MAJOR",
+                      "shortDescription": "Callable is returning a value where no return value was expected."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Missing `return` statement",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": false,
+                      "category": "TYPECHECK",
+                      "severity": "MAJOR",
+                      "shortDescription": "This callable is expected to return a value but is missing a `return` statement."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Missing return value",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": false,
+                      "category": "TYPECHECK",
+                      "severity": "MAJOR",
+                      "shortDescription": "This callable is expected to return a value but nothing is being returned.\nEither make sure you return a value, or change the annotation to `-> None`."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Assignment to a new keyword",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "A variable whose identifier is a keyword in a future Python release is assigned a value. This variable, which is currently named properly, will result in an error in the next Python version. It is recommended that you rename this variable."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Unnecessary semicolon",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": true,
+                      "category": "STYLE",
+                      "severity": "MINOR",
+                      "shortDescription": "Semicolons are not needed in Python unless using multiple statements in single line.\nUse of semi-colons add unnecessary clutter."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Module imports itself",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "The module is importing itself. This is not recommended."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Re-definition found for builtin function",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MAJOR",
+                      "shortDescription": "Defining a local variable or function with the same name as a built-in object makes the built-in object unusable within the current scope and makes the code prone to bugs."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Keyword argument defined before variable positional arguments",
+                      "analyzer": {
+                        "name": "Python"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MAJOR",
+                      "shortDescription": "On defining a keyword argument before variable positional arguments, one can end up in having multiple values passed for the aforementioned parameter in case the method is called with keyword arguments. It is recommended to define keyword arguments after variable positional arguments."
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "name": "Rust",
+              "issues": {
+                "edges": [
+                  {
+                    "node": {
+                      "title": "Found redundant `take_while` with `map` call",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Using `take_while` with wrapping `map` calls is equivalent to directly using `map_while`."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found manual implementation of `cycle`",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Calling `iter::repeat(..)` upon an `IntoIterator`, followed by `.flatten()` is equivalent\nto using `cycle` on an `Iterator`. `cycle` is clearer and more readable."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found `bool::then` returning a literal",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "`.then(<literal>)` unnecessarily boxes a literal value, causing extra overhead. Consider using the eager variant, `bool::then_some`, which reduces laziness and improves performance."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found potentially buggy split of string into lines",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MINOR",
+                      "shortDescription": "Manual string-split to lines using `.split(\"\\n\")` is more concisely\nwritten as `.lines()`, as both `split(\"\\n\")` or `split(\"\\r\\n\")`\nare buggy if your intention is to precisely extract lines from the text.\n\nFor dynamic inputs using a more robust solution such as `lines()`,\nis preferred over `split('\\n')`."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found redundant let-binding",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "`let` bindings in the form of `if-let` and `while-let` expressions are unnecessary unless they contain a pattern capture."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found redundant `match` over `std::cmp::Ordering`",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "`Ordering::then_with` is a shorthand to perform a computation when on `Equal` and return the `Ordering` as-is otherwise. This function can be used to simplify certain `match` expressions."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found redundant `lock()` on `std::io::stdin()`",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Since 1.62, `std::io::stdin()` can directly be consumed through `.lines()` and `.read_line()`, without acquiring a lock first, by means of `.lock()``."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found manual implementation of `Seek::stream_position`",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": true,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Calling `Seek::seek` with `SeekFrom::Current(0)` as the position is equivalent\nto `Seek::stream_position`. Consider using `Seek::stream_position` to reduce\ncomplexity."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Using ordered iteration methods on arbitrarily ordered iterator",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MAJOR",
+                      "shortDescription": "Iterator methods such as `.skip_while(_)` and `.take_while(_)` are usually used\nto manipulate a section of an ordered iterator. However, iteration methods upon\n`std::collections::HashMap` and `std::collections::HashSet` iterate in an\narbitrary order, which can result in non-deterministic behaviour when paired\nwith `.skip_while(_)` or `.take_while(_)`."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found needless `Option::take`",
+                      "analyzer": {
+                        "name": "Rust"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "`Option::take` takes the value out of the option, leaving a `Option::None` in its place. However, when\nused with a temporary value, it has no effect. This can occur when\n`Option::take` is called in conjunction with `Option::as_ref`."
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "name": "C & C++",
+              "issues": {
+                "edges": [
+                  {
+                    "node": {
+                      "title": "Audit required: calling command processor based `system()` is exploitable",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": false,
+                      "category": "SECURITY",
+                      "severity": "MAJOR",
+                      "shortDescription": "The `system()` function in C programming executes a specified command by invoking an implementation-defined command processor, such as a UNIX shell or CMD.EXE in Microsoft Windows.  The problem with using system() function is that it can result in exploitable vulnerabilities, allowing for the execution of arbitrary system commands. The risks associated with using the system() function include passing an unsanitized or improperly sanitized command string originating from a tainted source, specifying a command without a path name and the command processor path name resolution mechanism is accessible to an attacker, specifying a relative path to an executable and control over the current working directory is accessible to an attacker, and if the specified executable program can be spoofed by an attacker."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Mutating the source object during copy operation",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "The implementation of copy constructors and copy assignment operators are expected to create a copy of the source object with the same value representation as the original object. However, these constructors should never modify the state of the source object which is only meant to be copied from.  To avoid such issues, it is recommended that copy constructors and copy assignment operators have an idiomatic signature - `T(const T&)` for copy constructors and `T& operator=(const T&)` for copy assignment operators. Copy constructors and copy assignment operators that do not meet these requirements do not comply with the [CopyConstructible](https://en.cppreference.com/w/cpp/named_req/CopyConstructible) or [CopyAssignable](https://en.cppreference.com/w/cpp/named_req/CopyAssignable) named requirements and this excludes the type to be used with common standard library."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "MISRA Required: Pointer to FILE should not be dereferenced",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "A pointer to the standard type FILE must not be dereferenced, whether explicitly or implicitly."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found using default opertor `new` for over-aligned types",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "The global operator `new` is called it allocates storage for any object of the specified size, and it is only guaranteed to have a suitable alignment for objects with a fundamental alignment requirement, and not for over-aligned"
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "`std::bad_alloc` exception not caught during memory allocation",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "While overloading the operator `new` within a block or an expression marked with the `noexcept` operator, it is essential to handle the possibility of a memory allocation failure by catching the `std::bad_alloc` exception.  The operator `new` is used to allocate memory for objects at runtime. When an object is created using `new`, one of the allocation functions is called. The function will throw a `std::bad_alloc` exception if the allocation fails. When this exception is not caught it could result in undefined bahivior which includes unexpected program termination."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found an implicit conversion across boolean and other primitive type",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": true,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "Found an implicit conversion between built-in types and booleans. Such a conversion can lead to readability issues and potential bugs in the code.  For example, if a variable of type `int` is used in a boolean context, it can lead to confusion as to whether it represents true or false. Additionally, implicit conversions can hide potential bugs, as the code may behave differently than expected."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Use of `sizeof` with an expression as operand",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "The operator `sizeof` never evaluates the expression provided as an argument unless it's a variable length array. It only determines the type of the operand. (See reference)."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Potential divide by zero",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "Dividing by zero can cause a runtime error, leading to a crash. Because as such dividing by zero is undefined behaviour."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found redundant access to raw pointer while using a smart pointer",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": true,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Found redundant access to an underlying pointer using the `get` method of smart pointer.  Using a smart pointer eliminates the need for manual memory management and reduces the chances of memory leaks. However, if a raw pointer is accessed after it has been assigned to a smart pointer, it indicates redundant access that can be safely removed. This can lead to cleaner and more readable code."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Use of `sizeof` operator with dynamic expressions",
+                      "analyzer": {
+                        "name": "C & C++"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "The check finds usages of `sizeof` expressions which are most likely errors. The `sizeof` operator yields the size (in bytes) of its operand, which may be an expression or the parenthesized name of a type. Misuse of this operator may lead"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "name": "Ruby",
+              "issues": {
+                "edges": [
+                  {
+                    "node": {
+                      "title": "Pass `__FILE__` and `__LINE__` to `eval` method, as they are used by backtraces",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "`eval` can receive source location metadata, that are filename and line number. The metadata is used by backtraces. It is recommended to pass the metadata to `eval` method."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Replace with `Integer#odd?`/`Integer#even?`",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": true,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": ""
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Improper parameters to `expand_path`",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": true,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": ""
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Use of implicit block detected",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": true,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "Consider using explicit block argument to avoid writing block literal that just passes its arguments to another block."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Redundant self assignment was detected",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Reassigning values to a variable while calling in-place methods is unnecessary. Any such method calls can be made without the assignment part."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Sole nested conditionals detected",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Conditional branches with a single conditional node inside can be combined into a single conditional statement."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Incorrect order of keyword parameters detected",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "For better readability, it is recommended that the optional keyword parameters stay at the end of the parameters list. This is so because when looking through the source, it is expected to find required parameters at the beginning of parameters list and"
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Combinable loop statements detected",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "At places where there are two consecutive loops that iterate over the same data, it is suggested that they be combined into one. This makes the code neat, concise and efficient."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Manually combining hashes is error prone",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MAJOR",
+                      "shortDescription": "Manually combining hashes is error prone and hard to follow, especially when there are many values. Poor implementations may also introduce performance or security concerns if they are prone to collisions. Delegating to `Array#hash` is clearer, faster, and safer."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Deprecated attribute assignment in Gemspec file",
+                      "analyzer": {
+                        "name": "Ruby"
+                      },
+                      "autofixAvailable": true,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MAJOR",
+                      "shortDescription": "Deprecated attribute attributes should not be set in a gemspec file. Removing deprecated attributes allows the user to receive smaller packed gems."
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "name": "Java",
+              "issues": {
+                "edges": [
+                  {
+                    "node": {
+                      "title": "Undocumented method found",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "DOCUMENTATION",
+                      "severity": "MINOR",
+                      "shortDescription": "This method does not have any documentation.\n\nConsider adding a documentation comment to explain its use."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Insecure network protocols must not be used",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "SECURITY",
+                      "severity": "CRITICAL",
+                      "shortDescription": "Insecure network protocols such as HTTP or FTP which do not make use of TLS/SSL can allow Man in the Middle (MitM) attacks to occur.\n\nUse secure protocols whenever possible."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Disabling escaping of special characters in templates is a security risk",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "SECURITY",
+                      "severity": "CRITICAL",
+                      "shortDescription": "Automatic variable escaping should not be disabled when using template processing systems such as Mustache or FreeMarker."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "LDAP object deserialization is a security risk",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "SECURITY",
+                      "severity": "CRITICAL",
+                      "shortDescription": "[LDAP](https://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol) (Lightweight Directory Access Protocol) search queries should not allow objects found to be deserialized."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "JWTs should be checked for authenticity and integrity",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "SECURITY",
+                      "severity": "CRITICAL",
+                      "shortDescription": "Always make sure to use only signed JWTs, and properly verify that a JWT's signature is valid before proceeding."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Audit: log4j version used could lead to remote code execution",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "SECURITY",
+                      "severity": "CRITICAL",
+                      "shortDescription": "The `log4j` library is a popular logging library used across the JVM ecosystem. However, if you are using a vulnerable version of Log4j (A version between `2.0` and `2.17.0`), RCE (Remote Code Execution) as well as DoS (Denial of Service) attacks are possible through abuse of Log4j's template processing algorithm.\n\nAn attacker can perform a malicious `JNDI` object lookup to chain other exploits, or induce the application to process a malicious template string resulting in a DoS attack if your code logs request data (such as a user agent header).\n\nUpdate your Log4j version to `2.17.1` to mitigate these vulnerabilities."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Audit: Biometric authentication should always be used with a cryptographic object",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "SECURITY",
+                      "severity": "CRITICAL",
+                      "shortDescription": "Biometric authentication should not be performed without an associated `CryptoObject` value."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Audit: MongoDB queries using operators like `$where` may be a security risk",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "SECURITY",
+                      "severity": "CRITICAL",
+                      "shortDescription": "A MongoDB query appears to contain a dynamically evaluated operator (such as `$where`) and also accepts untrusted input.\n\nConsider using a declarative query and allow only values being compared to be set directly from input, not operators themselves."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Audit: Double checked locking is not safe",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "This method may contain an instance of double-checked locking of a non-volatile field. This will not work because the [unpredictability of Java's object allocation mechanics](https://stackoverflow.com/a/4926812/6325886) may result in race conditions with other threads."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Insecure hash algorithm usage with passwords detected",
+                      "analyzer": {
+                        "name": "Java"
+                      },
+                      "autofixAvailable": false,
+                      "category": "SECURITY",
+                      "severity": "CRITICAL",
+                      "shortDescription": "The MD* family of hashing algorithms (MD2, MD4 and MD5), as well as SHA-1 are cryptographically insecure and are very susceptible to collision attacks. These algorithms must not be used to hash passwords or cryptographically significant values."
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "node": {
+              "name": "JavaScript",
+              "issues": {
+                "edges": [
+                  {
+                    "node": {
+                      "title": "Found unused objects",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Class constructors being invoked and then dropped immediately is an anti-pattern and should be avoided."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Inconsistent font-display for Google Fonts",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": true,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "The `display` descriptor for the Google font is either not assigned or set to `auto`, `fallback`, or `block`.\nA recommended way to resolve this is to set `display` as `optional`. Specifying `display=optional` minimizes the risk of invisible text or layout shift. If it is essential to swap to a custom font after it has loaded, use `display=swap` instead."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found octal literals",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Octal literals are numerals that begin with a leading zero, such as:"
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "The `scope` scope should be used only on `<th>` elements",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": ""
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found division operators explicitly at the beginning of regular expressions",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": true,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Regex literals should escape division operators."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Should not use arrays and Objects as default properties",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MINOR",
+                      "shortDescription": "In order to avoid sharing of properties of various instance of an Ember class component, you must initializ the properties at the time of object creation.  Even if the component only appears once on a page, when you leave the route, only the component instance gets destroyed, not the factory. So when you come back, a new instance of the Component will get created, and this new component will have traces of the previous time you visited the page."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Detected the violation of rules of hooks",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": false,
+                      "category": "BUG_RISK",
+                      "severity": "MAJOR",
+                      "shortDescription": "**Rule 1: Only Call hooks at the Top Level.** Don't call hooks inside loops, conditions, or nested functions. Instead, always use hooks at the top level of your React function."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Found anonymous functions",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": false,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "An anonymous function is a function without a name. An anonymous function is often not accessible after its initial creation. Anonymous functions can be used as an argument to other functions or as an immediately invoked function execution.  Using anonymous functions is a bad practice because of the following reason:"
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Call to Function object",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": true,
+                      "category": "ANTI_PATTERN",
+                      "severity": "MINOR",
+                      "shortDescription": "Creating functions using the `Function` constructor can be avoided when all arguments are strings."
+                    }
+                  },
+                  {
+                    "node": {
+                      "title": "Optional property in interface has an 'undefined' type",
+                      "analyzer": {
+                        "name": "JavaScript"
+                      },
+                      "autofixAvailable": true,
+                      "category": "TYPECHECK",
+                      "severity": "MINOR",
+                      "shortDescription": "Optional property syntax (?) implicitly adds an 'undefined' type to the property.\n\nExplicitly having an 'undefined' type in the union of an optional property is redundant and should be avoided to improve the readability of the code."
+                    }
                   }
                 ]
               }
