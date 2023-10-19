@@ -34,6 +34,16 @@ total_error_rate = total_errors / total_lines if total_lines > 0 else None
 new_row = pd.DataFrame({'analyzerShortcode': ['Total'], 'error_rate': [total_error_rate]})
 analyzers_df = pd.concat([analyzers_df, new_row], ignore_index=True)
 
+
+# # エラー率の棒グラフを作成（言語別）
+# plt.figure(figsize=(10, 6))
+# barplot = sns.barplot(data=analyzers_df, x='analyzerShortcode', y='error_rate')
+# barplot.set_xticklabels(barplot.get_xticklabels(), fontsize=10)
+# plt.title('Error Rate by Language')
+# plt.xlabel('Language')
+# plt.ylabel('Error Rate')
+# plt.savefig('error_rate_by_language.png')
+
 # カテゴリ別のエラー率を計算とグラフ描写
 categories_df = pd.DataFrame(categories_data)
 categories_df['error_rate'] = categories_df.apply(lambda row: calculate_error_rate(row, total_lines), axis=1)
@@ -65,8 +75,12 @@ plt.ylabel('Error Rate')
 plt.subplots_adjust(bottom=0.25)  # topパラメータを調整して余白を追加
 plt.savefig('error_rate_by_category.png')
 
+# # グラフを表示
+# plt.show()
+
 # スコアを計算
 score = (1 - total_category_error_rate) * 100
+
 # スコアを表示するためのデータフレームを作成
 score_df = pd.DataFrame([{'Score': score}], index=['Code Quality'])
 
@@ -89,3 +103,6 @@ plt.subplots_adjust(top=0.7)  # topパラメータを調整して余白を追加
 
 # グラフを保存
 plt.savefig('overall_code_quality_score.png')
+
+# # グラフを表示
+# plt.show()

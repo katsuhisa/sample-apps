@@ -1,8 +1,11 @@
 {
-    "php": 7,
-    "ruby": 12,
-    "html": 48,
-    "javascript": 31,
-    "c": 18,
-    "python": 12
+    "DS_Store": 1,
+    "toml": 60,
+    "gitignore": 1,
+    "Dockerfile": 18,
+    "json": 843,
+    "python": 242,
+    "png": 106,
+    "txt": 6,
+    "sh": 14
 }
