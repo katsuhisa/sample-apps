@@ -54,7 +54,7 @@ query($repoName: String!, $userName: String!, $vcsProvider: VCSProvider!) {
 '''
 variables = {
     "repoName": "sample-apps",
-    "userName": "katsuhisa",
+    "userName": "LLM-HACKATHON-Team5",
     "vcsProvider": "GITHUB"
 }
 
@@ -70,6 +70,6 @@ if response.status_code == 200:
     with open('deepsource_response.json', 'w') as json_file:
         json.dump(data, json_file, indent=2)
     
-    print("Data has been saved to 'deepsource_response.json'")
+    print("Data has been saved to 'response.json'")
 else:
     print(f"Failed to execute query: {response.status_code}")

@@ -78,6 +78,7 @@ plt.savefig('error_rate_by_category.png')
 score = (1 - total_category_error_rate) * 100
 
 # スコアを表示するためのデータフレームを作成
+# スコアを表示するためのデータフレームを作成
 score_df = pd.DataFrame([{'Score': score}], index=['Code Quality'])
 
 # グラフの設定
@@ -92,7 +93,7 @@ plt.title('Overall Code Quality Score')
 
 
 # スコアのテキストを追加
-plt.text(score/2, 0, f'{score:.1f}Point', color='white', va='center', ha='center', fontsize=24, weight='bold')
+plt.text(score/2, 0, f'{score:.2f}%', color='white', va='center', ha='center', fontsize=24, weight='bold')
 
 # グラフの上部に余白を追加
 plt.subplots_adjust(top=0.7)  # topパラメータを調整して余白を追加

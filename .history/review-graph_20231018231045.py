@@ -92,7 +92,7 @@ plt.title('Overall Code Quality Score')
 
 
 # スコアのテキストを追加
-plt.text(score/2, 0, f'{score:.1f}Point', color='white', va='center', ha='center', fontsize=24, weight='bold')
+plt.text(score/2, 0, f'{score:.1f}点', color='white', va='center', ha='center', fontsize=24, weight='bold')
 
 # グラフの上部に余白を追加
 plt.subplots_adjust(top=0.7)  # topパラメータを調整して余白を追加
